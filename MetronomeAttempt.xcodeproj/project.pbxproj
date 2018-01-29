@@ -7,14 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		920ED8B41ECBCC5800CF981C /* InfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920ED8B31ECBCC5800CF981C /* InfoVC.swift */; };
+		9286F3B21ECDF253009FAFFD /* StartScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9286F3B11ECDF253009FAFFD /* StartScreenVC.swift */; };
+		9286F3B41ECE532F009FAFFD /* ScaleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9286F3B31ECE532F009FAFFD /* ScaleTableViewCell.swift */; };
+		9286F3B61ECE75DC009FAFFD /* ScalesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9286F3B51ECE75DC009FAFFD /* ScalesTableViewController.swift */; };
 		92CD49171EC5F4BD00E351C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CD49161EC5F4BD00E351C9 /* AppDelegate.swift */; };
 		92CD49191EC5F4BD00E351C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CD49181EC5F4BD00E351C9 /* ViewController.swift */; };
 		92CD491C1EC5F4BD00E351C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92CD491A1EC5F4BD00E351C9 /* Main.storyboard */; };
 		92CD491E1EC5F4BD00E351C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92CD491D1EC5F4BD00E351C9 /* Assets.xcassets */; };
 		92CD49211EC5F4BD00E351C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92CD491F1EC5F4BD00E351C9 /* LaunchScreen.storyboard */; };
+		92CD492E1EC5F86C00E351C9 /* snap1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 92CD492C1EC5F86C00E351C9 /* snap1.wav */; };
+		92CD492F1EC5F86C00E351C9 /* snap2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 92CD492D1EC5F86C00E351C9 /* snap2.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		920ED8B31ECBCC5800CF981C /* InfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoVC.swift; sourceTree = "<group>"; };
+		9286F3B11ECDF253009FAFFD /* StartScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreenVC.swift; sourceTree = "<group>"; };
+		9286F3B31ECE532F009FAFFD /* ScaleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleTableViewCell.swift; sourceTree = "<group>"; };
+		9286F3B51ECE75DC009FAFFD /* ScalesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalesTableViewController.swift; sourceTree = "<group>"; };
 		92CD49131EC5F4BD00E351C9 /* MetronomeAttempt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetronomeAttempt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92CD49161EC5F4BD00E351C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92CD49181EC5F4BD00E351C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +32,8 @@
 		92CD491D1EC5F4BD00E351C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92CD49201EC5F4BD00E351C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92CD49221EC5F4BD00E351C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92CD492C1EC5F86C00E351C9 /* snap1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snap1.wav; sourceTree = "<group>"; };
+		92CD492D1EC5F86C00E351C9 /* snap2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snap2.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +47,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92C949B41EDB952C00792A15 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9286F3B11ECDF253009FAFFD /* StartScreenVC.swift */,
+				92CD49181EC5F4BD00E351C9 /* ViewController.swift */,
+				9286F3B51ECE75DC009FAFFD /* ScalesTableViewController.swift */,
+				920ED8B31ECBCC5800CF981C /* InfoVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		92C949B61EDB954100792A15 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9286F3B31ECE532F009FAFFD /* ScaleTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		92C949B71EDB954900792A15 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		92C949B81EDB958600792A15 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				92CD492C1EC5F86C00E351C9 /* snap1.wav */,
+				92CD492D1EC5F86C00E351C9 /* snap2.wav */,
+			);
+			name = Files;
+			sourceTree = "<group>";
+		};
 		92CD490A1EC5F4BD00E351C9 = {
 			isa = PBXGroup;
 			children = (
@@ -54,8 +101,11 @@
 		92CD49151EC5F4BD00E351C9 /* MetronomeAttempt */ = {
 			isa = PBXGroup;
 			children = (
+				92C949B81EDB958600792A15 /* Files */,
+				92C949B71EDB954900792A15 /* Model */,
+				92C949B61EDB954100792A15 /* View */,
+				92C949B41EDB952C00792A15 /* Controller */,
 				92CD49161EC5F4BD00E351C9 /* AppDelegate.swift */,
-				92CD49181EC5F4BD00E351C9 /* ViewController.swift */,
 				92CD491A1EC5F4BD00E351C9 /* Main.storyboard */,
 				92CD491D1EC5F4BD00E351C9 /* Assets.xcassets */,
 				92CD491F1EC5F4BD00E351C9 /* LaunchScreen.storyboard */,
@@ -124,8 +174,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92CD492E1EC5F86C00E351C9 /* snap1.wav in Resources */,
 				92CD49211EC5F4BD00E351C9 /* LaunchScreen.storyboard in Resources */,
 				92CD491E1EC5F4BD00E351C9 /* Assets.xcassets in Resources */,
+				92CD492F1EC5F86C00E351C9 /* snap2.wav in Resources */,
 				92CD491C1EC5F4BD00E351C9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,7 +189,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				920ED8B41ECBCC5800CF981C /* InfoVC.swift in Sources */,
+				9286F3B41ECE532F009FAFFD /* ScaleTableViewCell.swift in Sources */,
+				9286F3B21ECDF253009FAFFD /* StartScreenVC.swift in Sources */,
 				92CD49191EC5F4BD00E351C9 /* ViewController.swift in Sources */,
+				9286F3B61ECE75DC009FAFFD /* ScalesTableViewController.swift in Sources */,
 				92CD49171EC5F4BD00E351C9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,8 +319,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_ACTIVITY_MODE = "";
+				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
 				DEVELOPMENT_TEAM = H42GLY7MG2;
 				INFOPLIST_FILE = MetronomeAttempt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kiansalem.MetronomeAttempt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -276,8 +335,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_ACTIVITY_MODE = "";
 				DEVELOPMENT_TEAM = H42GLY7MG2;
 				INFOPLIST_FILE = MetronomeAttempt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kiansalem.MetronomeAttempt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -304,6 +365,7 @@
 				92CD49271EC5F4BD00E351C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
