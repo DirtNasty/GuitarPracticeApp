@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var barSegmentedControl: UISegmentedControl!
     
-    // Useless outlets, just to call an isHidden method on
+    // Useless outlets, just to call an isHidden method on.
     @IBOutlet weak var beatLabel: UILabel!
     @IBOutlet weak var barLabel: UILabel!
     @IBOutlet weak var nextLabel: UILabel!
