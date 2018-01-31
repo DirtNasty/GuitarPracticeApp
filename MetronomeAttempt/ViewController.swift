@@ -84,7 +84,8 @@ class ViewController: UIViewController {
             // SLOW (50 BpM)
         }
         
-        // MATH FOR BPM SLIDER: 60 / BpM Variable = Time Interval
+        // MATH FOR BPM SLIDER:
+        // 60 / BpM Variable = Time Interval
         
     }
     
