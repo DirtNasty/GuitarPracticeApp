@@ -16,8 +16,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var theBarLabel: UILabel!
     @IBOutlet weak var currentScale: UILabel!
     @IBOutlet weak var nextScale: UILabel!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var speedSlider: UISlider!
     @IBOutlet weak var barSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var metronomeSpeedLabel: UILabel!
+    @IBOutlet weak var tempoRangeLabel: UILabel!
+    
     
     // Useless outlets, just to call an isHidden method on.
     @IBOutlet weak var beatLabel: UILabel!
@@ -34,9 +37,7 @@ class ViewController: UIViewController {
     // Number variables
     var metronomeBeat = 1
     var metronomeBar = 1
-    //var selectedIndex = 0.0
-    var selectedIndex = UserDefaults.standard.double(forKey: "METRONOMESPEED")
-    //var barNumber = 5
+    var metronomeSpeedVariable = UserDefaults.standard.float(forKey: "METRONOMESPEED")
     var barNumber = UserDefaults.standard.integer(forKey: "NUMBEROFBARS")
     
     // Item variables
@@ -44,8 +45,7 @@ class ViewController: UIViewController {
     var firstBeatSnap: AVAudioPlayer!
     var otherBeatSnap: AVAudioPlayer!
     
-    // Boolean variable to ensure a metronome speed and amount of bars are selected.
-    var speedIsSelected = false
+    // Boolean variable to ensure a metronome speed is selected.
     var barsAreSelected = false
     
     // Function called whenever the view is loaded but nothing is displayed on the screen
@@ -57,10 +57,6 @@ class ViewController: UIViewController {
         nextScale.text = scales[randomIndex]
         barSegmentedControl.selectedSegmentIndex = barNumber - 2
         
-        if segmentedControl.selectedSegmentIndex == -1 || selectedIndex == 0.0 {
-            speedIsSelected = false
-        }
-        
         if barSegmentedControl.selectedSegmentIndex == -2 || barNumber == 0 {
             barsAreSelected = false
         }
@@ -69,21 +65,7 @@ class ViewController: UIViewController {
         if barSegmentedControl.selectedSegmentIndex == 0 || barSegmentedControl.selectedSegmentIndex == 1 || barSegmentedControl.selectedSegmentIndex == 2 || barSegmentedControl.selectedSegmentIndex == 3 {
             barsAreSelected = true
         }
-        
-        if selectedIndex == 0.6 {
-            segmentedControl.selectedSegmentIndex = 2
-            speedIsSelected = true
-            // FAST (100 BpM)
-        } else if selectedIndex == 1.0 {
-            segmentedControl.selectedSegmentIndex = 1
-            speedIsSelected = true
-            // MEDIUM (60 BpM)
-        } else if selectedIndex == 1.2 {
-            segmentedControl.selectedSegmentIndex = 0
-            speedIsSelected = true
-            // SLOW (50 BpM)
-        }
-        
+     
         // MATH FOR BPM SLIDER:
         // 60 / BpM Variable = Time Interval
         
@@ -92,7 +74,7 @@ class ViewController: UIViewController {
     // Function called when the "Start Practicing" button is pressed
     @IBAction func startTimerPressed(_ sender: Any) {
         
-        if speedIsSelected == true && barsAreSelected == true {
+        if barsAreSelected == true {
             
             // isHidden methods
             beatLabel.isHidden = false
@@ -104,7 +86,7 @@ class ViewController: UIViewController {
             nextScale.isHidden = false
             stopPracticing.isHidden = false
             metronomeSpeed.isHidden = true
-            segmentedControl.isHidden = true
+            speedSlider.isHidden = true
             startPracticing.isHidden = true
             barsAmount.isHidden = true
             barSegmentedControl.isHidden = true
@@ -134,23 +116,15 @@ class ViewController: UIViewController {
             
             firstBeatSnap.play()
             
-            // Else statement to perform all of the alert popups if necessary things are unselected.
+            // Else statement to perform the appropriate alert popup if necessary things are unselected.
         } else {
-            let title = UIAlertAction(title: "OK", style: .default, handler: nil)
             
-            let bothAlert = UIAlertController(title: "Error", message: "You must choose a number of bars and a metronome speed before starting.", preferredStyle: .alert)
-            let speedAlert = UIAlertController(title: "Error", message: "You must choose a metronome speed before starting.", preferredStyle: .alert)
+            let title = UIAlertAction(title: "OK", style: .default, handler: nil)
             let barsAlert = UIAlertController(title: "Error", message: "You must choose a number of bars before starting.", preferredStyle: .alert)
             
-            if speedIsSelected == false && barsAreSelected == false {
-                bothAlert.addAction(title)
-                self.present(bothAlert, animated: true, completion: nil)
-            } else if barsAreSelected == false {
+            if barsAreSelected == false {
                 barsAlert.addAction(title)
                 self.present(barsAlert, animated: true, completion: nil)
-            } else if speedIsSelected == false{
-                speedAlert.addAction(title)
-                self.present(speedAlert, animated: true, completion: nil)
             }
         }
     }
@@ -183,7 +157,7 @@ class ViewController: UIViewController {
         nextScale.isHidden = true
         stopPracticing.isHidden = true
         metronomeSpeed.isHidden = false
-        segmentedControl.isHidden = false
+        speedSlider.isHidden = false
         startPracticing.isHidden = false
         barsAmount.isHidden = false
         barSegmentedControl.isHidden = false
@@ -211,18 +185,12 @@ class ViewController: UIViewController {
         }
     }
     
-    // Function called when the UIPicker for the metronome's speed is switched
-    @IBAction func speedPickerAction(_ sender: Any) {
-        if segmentedControl.selectedSegmentIndex == 0 {
-            UserDefaults.standard.set(1.2, forKey: "METRONOMESPEED")
-            speedIsSelected = true
-        } else if segmentedControl.selectedSegmentIndex == 1 {
-            UserDefaults.standard.set(1.0, forKey: "METRONOMESPEED")
-            speedIsSelected = true
-        } else if segmentedControl.selectedSegmentIndex == 2 {
-            UserDefaults.standard.set(0.6, forKey: "METRONOMESPEED")
-            speedIsSelected = true
-        }
+    // Function called when the UISlider for the metronome's speed is moved.
+    
+    @IBAction func speedSliderMoved(_ sender: Any) {
+        UserDefaults.standard.set(speedSlider.value, forKey: "METRONOMESPEED")
+        metronomeSpeedVariable = speedSlider.value
+        metronomeSpeedLabel.text = String(metronomeSpeedVariable)
     }
     
     // Function called every time interval that happens within the "theTimer: Timer" variable

@@ -167,44 +167,33 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Ready!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s52-v1-qi3">
-                                <rect key="frame" x="16" y="192" width="343" height="36"/>
+                                <rect key="frame" x="16" y="164" width="343" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8o-KP-fuJ">
-                                <rect key="frame" x="14" y="262" width="347" height="36"/>
+                                <rect key="frame" x="14" y="234" width="347" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Blues" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5X-Fj-Rb8">
-                                <rect key="frame" x="14" y="322" width="347" height="30"/>
+                                <rect key="frame" x="14" y="286" width="347" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rQ-6K-NjN">
-                                <rect key="frame" x="30" y="599" width="315" height="48"/>
+                                <rect key="frame" x="30" y="608.5" width="315" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Stop Practicing"/>
                                 <connections>
                                     <action selector="stopTimerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dxz-jl-Gfz"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="LaU-MR-yg7">
-                                <rect key="frame" x="66" y="563" width="243" height="29"/>
-                                <segments>
-                                    <segment title="Slow"/>
-                                    <segment title="Medium"/>
-                                    <segment title="Fast"/>
-                                </segments>
-                                <connections>
-                                    <action selector="speedPickerAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="MHi-If-3eI"/>
-                                </connections>
-                            </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Metronome Speed:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCG-4t-WrO">
-                                <rect key="frame" x="54" y="525" width="267" height="30"/>
+                                <rect key="frame" x="54" y="468.5" width="267" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -234,13 +223,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bars Before Scale Changes:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V54-TT-Trt">
-                                <rect key="frame" x="16" y="451" width="343" height="22"/>
+                                <rect key="frame" x="16" y="382.5" width="343" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="uuD-FG-hff">
-                                <rect key="frame" x="112" y="488" width="151" height="29"/>
+                                <rect key="frame" x="112" y="420.5" width="151" height="29"/>
                                 <segments>
                                     <segment title="1"/>
                                     <segment title="2"/>
@@ -251,42 +240,66 @@
                                     <action selector="barPickerAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="rYJ-XH-L5s"/>
                                 </connections>
                             </segmentedControl>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="40" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="Ika-r6-V1b">
+                                <rect key="frame" x="22" y="540.5" width="331" height="31"/>
+                                <connections>
+                                    <action selector="speedSliderMoved:" destination="BYZ-38-t0r" eventType="valueChanged" id="KG4-aN-kMT"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPM-v0-wjy">
+                                <rect key="frame" x="16" y="502.5" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Larghetto" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQb-UP-3Z4">
+                                <rect key="frame" x="16" y="570.5" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4Jb-bX-qgr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2JL-80-4FV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="uuD-FG-hff" secondAttribute="trailing" constant="96" id="2rp-3F-4ht"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ika-r6-V1b" secondAttribute="trailing" constant="8" id="2wR-Qk-g3B"/>
+                            <constraint firstItem="uuD-FG-hff" firstAttribute="top" secondItem="V54-TT-Trt" secondAttribute="bottom" constant="16" id="3fc-RM-wIB"/>
                             <constraint firstItem="V54-TT-Trt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="52X-AZ-A6y"/>
                             <constraint firstItem="BCG-4t-WrO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="38" id="6RF-Y9-n0H"/>
-                            <constraint firstItem="BCG-4t-WrO" firstAttribute="top" secondItem="uuD-FG-hff" secondAttribute="bottom" constant="9" id="AWu-L0-Ecr"/>
+                            <constraint firstItem="MPM-v0-wjy" firstAttribute="top" secondItem="BCG-4t-WrO" secondAttribute="bottom" constant="4" id="7Q5-GV-G2f"/>
+                            <constraint firstItem="aQb-UP-3Z4" firstAttribute="top" secondItem="Ika-r6-V1b" secondAttribute="bottom" id="9AY-VB-oU1"/>
                             <constraint firstItem="s52-v1-qi3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Chp-Ua-nNB"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LaU-MR-yg7" secondAttribute="bottom" constant="76" id="DQK-gL-y1D"/>
                             <constraint firstItem="uuD-FG-hff" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="96" id="Eja-ZX-zPP"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4rQ-6K-NjN" secondAttribute="bottom" constant="20" id="GVf-JQ-OGd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="V54-TT-Trt" secondAttribute="trailing" id="Im1-WI-Vkr"/>
                             <constraint firstItem="h5X-Fj-Rb8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="14" id="J7v-wO-n7k"/>
                             <constraint firstItem="tia-vd-4b9" firstAttribute="leading" secondItem="Bzr-dv-hJi" secondAttribute="trailing" constant="8" id="KTG-Bl-YLa"/>
                             <constraint firstItem="tia-vd-4b9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="LRT-bd-80r"/>
-                            <constraint firstItem="LaU-MR-yg7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="Nn8-DG-hje"/>
+                            <constraint firstItem="V54-TT-Trt" firstAttribute="top" secondItem="4Jb-bX-qgr" secondAttribute="bottom" constant="25" id="Nuk-Jb-BPd"/>
                             <constraint firstItem="b8o-KP-fuJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="14" id="PYF-8f-oar"/>
+                            <constraint firstItem="Ika-r6-V1b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="R6s-Ev-FMu"/>
                             <constraint firstItem="4Jb-bX-qgr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SlS-gs-erz"/>
+                            <constraint firstItem="BCG-4t-WrO" firstAttribute="top" secondItem="uuD-FG-hff" secondAttribute="bottom" constant="20" id="T2S-Yo-oSO"/>
                             <constraint firstItem="6Sc-P5-R0S" firstAttribute="leading" secondItem="xgO-AI-KaL" secondAttribute="trailing" constant="8" id="TyO-Rn-dcJ"/>
-                            <constraint firstItem="s52-v1-qi3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="128" id="a55-fL-dSC"/>
+                            <constraint firstItem="s52-v1-qi3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="a55-fL-dSC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MPM-v0-wjy" secondAttribute="trailing" id="aG8-FD-a9y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aQb-UP-3Z4" secondAttribute="trailing" id="bNX-lk-wTG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BCG-4t-WrO" secondAttribute="trailing" constant="38" id="bRa-H6-NPo"/>
-                            <constraint firstItem="h5X-Fj-Rb8" firstAttribute="top" secondItem="b8o-KP-fuJ" secondAttribute="bottom" constant="24" id="bgb-bd-pkz"/>
+                            <constraint firstItem="h5X-Fj-Rb8" firstAttribute="top" secondItem="b8o-KP-fuJ" secondAttribute="bottom" constant="16" id="bgb-bd-pkz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="s52-v1-qi3" secondAttribute="trailing" id="btp-ZT-dGy"/>
                             <constraint firstItem="Bzr-dv-hJi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="c8z-ap-XFo"/>
+                            <constraint firstItem="Ika-r6-V1b" firstAttribute="top" secondItem="MPM-v0-wjy" secondAttribute="bottom" constant="8" id="cpG-nO-GZz"/>
+                            <constraint firstItem="aQb-UP-3Z4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="dVw-dy-a3O"/>
                             <constraint firstItem="xgO-AI-KaL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="h9x-nW-Lqq"/>
                             <constraint firstItem="6Sc-P5-R0S" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="26" id="i4A-xN-Hn6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4rQ-6K-NjN" secondAttribute="trailing" constant="14" id="iQ5-sT-3cd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="LaU-MR-yg7" secondAttribute="trailing" constant="50" id="iVa-LW-pQ2"/>
                             <constraint firstAttribute="trailing" secondItem="tia-vd-4b9" secondAttribute="trailing" constant="14" id="irb-AM-Ddd"/>
                             <constraint firstItem="b8o-KP-fuJ" firstAttribute="top" secondItem="s52-v1-qi3" secondAttribute="bottom" constant="34" id="jYA-Up-F1f"/>
+                            <constraint firstItem="4rQ-6K-NjN" firstAttribute="top" secondItem="aQb-UP-3Z4" secondAttribute="bottom" constant="8" id="k42-EB-MUR"/>
                             <constraint firstItem="4rQ-6K-NjN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="14" id="kFE-PQ-ljo"/>
                             <constraint firstAttribute="trailing" secondItem="b8o-KP-fuJ" secondAttribute="trailing" constant="14" id="kKB-8b-Wdt"/>
-                            <constraint firstItem="uuD-FG-hff" firstAttribute="top" secondItem="V54-TT-Trt" secondAttribute="bottom" constant="15" id="nof-wx-5RF"/>
                             <constraint firstAttribute="trailing" secondItem="h5X-Fj-Rb8" secondAttribute="trailing" constant="14" id="pEY-wY-iQS"/>
-                            <constraint firstItem="LaU-MR-yg7" firstAttribute="top" secondItem="BCG-4t-WrO" secondAttribute="bottom" constant="8" id="tMr-aE-znJ"/>
+                            <constraint firstItem="MPM-v0-wjy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qlw-m4-Q9I"/>
                             <constraint firstItem="xgO-AI-KaL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="zg7-1S-dNX"/>
                         </constraints>
                     </view>
@@ -298,11 +311,13 @@
                         <outlet property="beatLabel" destination="xgO-AI-KaL" id="lpJ-tE-qs8"/>
                         <outlet property="currentScale" destination="s52-v1-qi3" id="UeM-x0-fSM"/>
                         <outlet property="metronomeSpeed" destination="BCG-4t-WrO" id="y0m-PM-5zh"/>
+                        <outlet property="metronomeSpeedLabel" destination="MPM-v0-wjy" id="jUj-VB-5Aj"/>
                         <outlet property="nextLabel" destination="b8o-KP-fuJ" id="1Xv-6y-YIq"/>
                         <outlet property="nextScale" destination="h5X-Fj-Rb8" id="cCg-jB-uKb"/>
-                        <outlet property="segmentedControl" destination="LaU-MR-yg7" id="vNm-sq-8AM"/>
+                        <outlet property="speedSlider" destination="Ika-r6-V1b" id="uFz-cp-8Mx"/>
                         <outlet property="startPracticing" destination="4Jb-bX-qgr" id="efR-cS-lAh"/>
                         <outlet property="stopPracticing" destination="4rQ-6K-NjN" id="6R8-Rc-LkB"/>
+                        <outlet property="tempoRangeLabel" destination="aQb-UP-3Z4" id="ite-as-Ovv"/>
                         <outlet property="theBarLabel" destination="tia-vd-4b9" id="WqN-ck-ZiC"/>
                         <outlet property="theTimerLabel" destination="6Sc-P5-R0S" id="DeN-A7-gPh"/>
                     </connections>
