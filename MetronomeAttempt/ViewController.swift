@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     // Number variables
     var metronomeBeat = 1
     var metronomeBar = 1
-    var metronomeSpeedVariable = UserDefaults.standard.float(forKey: "METRONOMESPEED")
+    var metronomeSpeedVariable = UserDefaults.standard.integer(forKey: "METRONOMESPEED")
     var barNumber = UserDefaults.standard.integer(forKey: "NUMBEROFBARS")
     
     // Item variables
@@ -186,11 +186,42 @@ class ViewController: UIViewController {
     }
     
     // Function called when the UISlider for the metronome's speed is moved.
-    
     @IBAction func speedSliderMoved(_ sender: Any) {
-        UserDefaults.standard.set(speedSlider.value, forKey: "METRONOMESPEED")
-        metronomeSpeedVariable = speedSlider.value
+        
+        // Set core data
+        UserDefaults.standard.set(Int(speedSlider.value), forKey: "METRONOMESPEED")
+        // Updates metronome speed variable as slider is moved.
+        metronomeSpeedVariable = Int(speedSlider.value)
+        // Updates the metronome speed label's text
         metronomeSpeedLabel.text = String(metronomeSpeedVariable)
+        
+        // Switch statement to determine the tempo range
+        switch metronomeSpeedVariable {
+        case 40...49:
+            tempoRangeLabel.text = "Grave"
+        case 50...54:
+            tempoRangeLabel.text = "Largo"
+        case 55...59:
+            tempoRangeLabel.text = "Larghetto"
+        case 60...69:
+            tempoRangeLabel.text = "Adagio"
+        case 70...84:
+            tempoRangeLabel.text = "Andante"
+        case 85...99:
+            tempoRangeLabel.text = "Moderato"
+        case 100...114:
+            tempoRangeLabel.text = "Allegretto"
+        case 115...139:
+            tempoRangeLabel.text = "Allegro"
+        case 140...149:
+            tempoRangeLabel.text = "Vivace"
+        case 150...169:
+            tempoRangeLabel.text = "Presto"
+        case 170...200:
+            tempoRangeLabel.text = "Prestissimo"
+        default:
+            tempoRangeLabel.text = "Adagio"
+        }
     }
     
     // Function called every time interval that happens within the "theTimer: Timer" variable
