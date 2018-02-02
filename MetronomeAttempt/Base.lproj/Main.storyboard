@@ -216,8 +216,8 @@
                                             <action selector="startTimerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yeu-a6-66e"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Measures Before Scale Changes:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V54-TT-Trt">
-                                        <rect key="frame" x="16.5" y="177" width="287" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bars Before Scale Changes:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V54-TT-Trt">
+                                        <rect key="frame" x="39.5" y="177" width="241" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -231,7 +231,7 @@
                                             <segment title="4"/>
                                         </segments>
                                         <connections>
-                                            <action selector="measurePickerAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="707-QO-5PJ"/>
+                                            <action selector="barPickerAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="rYJ-XH-L5s"/>
                                         </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Metronome Speed:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCG-4t-WrO">
@@ -285,11 +285,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Practice" id="NEV-9g-eaK"/>
                     <connections>
+                        <outlet property="barLabel" destination="Bzr-dv-hJi" id="6g5-VS-Tcu"/>
+                        <outlet property="barSegmentedControl" destination="uuD-FG-hff" id="eRb-8u-Rke"/>
+                        <outlet property="barsAmount" destination="V54-TT-Trt" id="6jE-ZC-MuD"/>
                         <outlet property="beatLabel" destination="xgO-AI-KaL" id="lpJ-tE-qs8"/>
                         <outlet property="currentScale" destination="s52-v1-qi3" id="UeM-x0-fSM"/>
-                        <outlet property="measureLabel" destination="Bzr-dv-hJi" id="4Uc-4X-l9L"/>
-                        <outlet property="measureSegmentedControl" destination="uuD-FG-hff" id="7sj-Qf-bLZ"/>
-                        <outlet property="measuresAmount" destination="V54-TT-Trt" id="txm-ly-hcB"/>
                         <outlet property="metronomeSpeed" destination="BCG-4t-WrO" id="y0m-PM-5zh"/>
                         <outlet property="metronomeSpeedLabel" destination="MPM-v0-wjy" id="jUj-VB-5Aj"/>
                         <outlet property="nextLabel" destination="b8o-KP-fuJ" id="1Xv-6y-YIq"/>
@@ -298,7 +298,7 @@
                         <outlet property="startPracticing" destination="4Jb-bX-qgr" id="efR-cS-lAh"/>
                         <outlet property="stopPracticing" destination="4rQ-6K-NjN" id="6R8-Rc-LkB"/>
                         <outlet property="tempoRangeLabel" destination="aQb-UP-3Z4" id="ite-as-Ovv"/>
-                        <outlet property="theMeasureLabel" destination="tia-vd-4b9" id="dwv-oX-rKX"/>
+                        <outlet property="theBarLabel" destination="tia-vd-4b9" id="WqN-ck-ZiC"/>
                         <outlet property="theTimerLabel" destination="6Sc-P5-R0S" id="DeN-A7-gPh"/>
                     </connections>
                 </viewController>
@@ -324,7 +324,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="325" id="1I4-R8-opf"/>
                                 </constraints>
-                                <string key="text">This app is meant for beginner or even pro guitar players to practice recognizing scales quickly. You select a metronome speed and a number of measures then it will display a random scale for you to play in the amount of time you chose.
+                                <string key="text">This app is meant for beginner guitar players, or even pro guitar players to practice recognizing scales quickly. Every 4 bars (16 Beats) a new scale to play is displayed on the screen.
 
 Stay tuned for more updates in the future, such as picking what scales you specifically want to include in your practice.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
