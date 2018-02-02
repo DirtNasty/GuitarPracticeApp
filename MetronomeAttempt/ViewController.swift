@@ -13,33 +13,33 @@ class ViewController: UIViewController {
     
     // Outlets
     @IBOutlet weak var theTimerLabel: UILabel!
-    @IBOutlet weak var theBarLabel: UILabel!
+    @IBOutlet weak var theMeasureLabel: UILabel!
     @IBOutlet weak var currentScale: UILabel!
     @IBOutlet weak var nextScale: UILabel!
     @IBOutlet weak var speedSlider: UISlider!
-    @IBOutlet weak var barSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var measureSegmentedControl: UISegmentedControl!
     @IBOutlet weak var metronomeSpeedLabel: UILabel!
     @IBOutlet weak var tempoRangeLabel: UILabel!
     
     
     // Useless outlets, just to call an isHidden method on.
     @IBOutlet weak var beatLabel: UILabel!
-    @IBOutlet weak var barLabel: UILabel!
+    @IBOutlet weak var measureLabel: UILabel!
     @IBOutlet weak var nextLabel: UILabel!
     @IBOutlet weak var startPracticing: UIButton!
     @IBOutlet weak var stopPracticing: UIButton!
     @IBOutlet weak var metronomeSpeed: UILabel!
-    @IBOutlet weak var barsAmount: UILabel!
+    @IBOutlet weak var measuresAmount: UILabel!
     
     // Array of every single scale to be used:
     let scales = ["A Blues", "A#/B♭ Blues", "B Blues", "C Blues", "C#/D♭ Blues", "D Blues", "D#/E♭ Blues", "E Blues", "F Blues", "F#/G♭ Blues", "G Blues", "G#/A♭ Blues", "A Major", "A#/B♭ Major", "B Major", "C Major", "C#/D♭ Major", "D Major", "D#/E♭ Major", "E Major", "F Major", "F#/G♭ Major", "G Major", "G#/A♭ Major", "A Minor Pentatonic", "A#/B♭ Minor Pentatonic", "B Minor Pentatonic", "C Minor Pentatonic", "C#/D♭ Minor Pentatonic", "D Minor Pentatonic", "D#/E♭ Minor Pentatonic", "E Minor Pentatonic", "F Minor Pentatonic", "F#/G♭ Minor Pentatonic", "G Minor Pentatonic", "G#/A♭ Minor Pentatonic", "A Minor", "A#/B♭ Minor", "B Minor", "C Minor", "C#/D♭ Minor", "D Minor", "D#/E♭ Minor", "E Minor", "F Minor", "F#/G♭ Minor", "G Minor", "G#/A♭ Minor"]
     
     // Number variables
     var metronomeBeat = 1
-    var metronomeBar = 1
+    var metronomeMeasure = 1
     var metronomeSpeedVariable = UserDefaults.standard.integer(forKey: "METRONOMESPEED")
     var timeInterval = UserDefaults.standard.double(forKey: "TIMEINTERVAL")
-    var barNumber = UserDefaults.standard.integer(forKey: "NUMBEROFBARS")
+    var measureNumber = UserDefaults.standard.integer(forKey: "NUMBEROFMEASURES")
     
     // Item variables
     var theTimer = Timer()
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     var otherBeatSnap: AVAudioPlayer!
     
     // Boolean variable to ensure a metronome speed is selected.
-    var barsAreSelected = false
+    var measuresAreSelected = false
     
     // Function called whenever the view is loaded but nothing is displayed on the screen
     override func viewDidLoad() {
@@ -58,22 +58,22 @@ class ViewController: UIViewController {
         
         // Set up labels
         theTimerLabel.text = String(metronomeBeat)
-        theBarLabel.text = String(metronomeBar)
+        theMeasureLabel.text = String(metronomeMeasure)
         
         let randomIndex = Int(arc4random_uniform(UInt32(scales.count)))
         nextScale.text = scales[randomIndex]
-        barSegmentedControl.selectedSegmentIndex = barNumber - 2
+        measureSegmentedControl.selectedSegmentIndex = measureNumber - 2
         
         metronomeSpeedLabel.text = String(metronomeSpeedVariable)
         speedSlider.value = Float(metronomeSpeedVariable)
         
-        if barSegmentedControl.selectedSegmentIndex == -2 || barNumber == 0 {
-            barsAreSelected = false
+        if measureSegmentedControl.selectedSegmentIndex == -2 || measureNumber == 0 {
+            measuresAreSelected = false
         }
         
-        // If statement that allows the 'barsAreSelected' variable to equate to true if a valid number is selected.
-        if barSegmentedControl.selectedSegmentIndex == 0 || barSegmentedControl.selectedSegmentIndex == 1 || barSegmentedControl.selectedSegmentIndex == 2 || barSegmentedControl.selectedSegmentIndex == 3 {
-            barsAreSelected = true
+        // If statement that allows the 'measuresAreSelected' variable to equate to true if a valid number is selected.
+        if measureSegmentedControl.selectedSegmentIndex == 0 || measureSegmentedControl.selectedSegmentIndex == 1 || measureSegmentedControl.selectedSegmentIndex == 2 || measureSegmentedControl.selectedSegmentIndex == 3 {
+            measuresAreSelected = true
         }
      
         // MATH FOR BPM SLIDER:
@@ -84,22 +84,22 @@ class ViewController: UIViewController {
     // Function called when the "Start Practicing" button is pressed
     @IBAction func startTimerPressed(_ sender: Any) {
         
-        if barsAreSelected == true {
+        if measuresAreSelected == true {
             
             // isHidden methods
             beatLabel.isHidden = false
-            barLabel.isHidden = false
+            measureLabel.isHidden = false
             nextLabel.isHidden = false
             theTimerLabel.isHidden = false
-            theBarLabel.isHidden = false
+            theMeasureLabel.isHidden = false
             currentScale.isHidden = false
             nextScale.isHidden = false
             stopPracticing.isHidden = false
             metronomeSpeed.isHidden = true
             speedSlider.isHidden = true
             startPracticing.isHidden = true
-            barsAmount.isHidden = true
-            barSegmentedControl.isHidden = true
+            measuresAmount.isHidden = true
+            measureSegmentedControl.isHidden = true
             
             // Implementing timer and metronome
             theTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
@@ -130,11 +130,11 @@ class ViewController: UIViewController {
         } else {
             
             let title = UIAlertAction(title: "OK", style: .default, handler: nil)
-            let barsAlert = UIAlertController(title: "Error", message: "You must choose a number of bars before starting.", preferredStyle: .alert)
+            let measuresAlert = UIAlertController(title: "Error", message: "You must choose a number of measures before starting.", preferredStyle: .alert)
             
-            if barsAreSelected == false {
-                barsAlert.addAction(title)
-                self.present(barsAlert, animated: true, completion: nil)
+            if measuresAreSelected == false {
+                measuresAlert.addAction(title)
+                self.present(measuresAlert, animated: true, completion: nil)
             }
         }
     }
@@ -150,27 +150,27 @@ class ViewController: UIViewController {
         // Stops timer
         theTimer.invalidate()
         
-        // Resets beat & bar to 1.
+        // Resets beat & measure to 1.
         metronomeBeat = 1
-        metronomeBar = 1
+        metronomeMeasure = 1
         theTimerLabel.text = "\(metronomeBeat)"
-        theBarLabel.text = "\(metronomeBar)"
+        theMeasureLabel.text = "\(metronomeMeasure)"
         currentScale.text = "Get Ready!"
         
         // Hide and unhide the appropriate items.
         beatLabel.isHidden = true
-        barLabel.isHidden = true
+        measureLabel.isHidden = true
         nextLabel.isHidden = true
         theTimerLabel.isHidden = true
-        theBarLabel.isHidden = true
+        theMeasureLabel.isHidden = true
         currentScale.isHidden = false
         nextScale.isHidden = true
         stopPracticing.isHidden = true
         metronomeSpeed.isHidden = false
         speedSlider.isHidden = false
         startPracticing.isHidden = false
-        barsAmount.isHidden = false
-        barSegmentedControl.isHidden = false
+        measuresAmount.isHidden = false
+        measureSegmentedControl.isHidden = false
     }
     
     // Safety function to stop timer; is called everytime the view is about to disappear.
@@ -178,20 +178,20 @@ class ViewController: UIViewController {
         theTimer.invalidate()
     }
     
-    // Function called when the UIPicker for the amount of bars before a scale change is switched
-    @IBAction func barPickerAction(_ sender: Any) {
-        if barSegmentedControl.selectedSegmentIndex == 0 {
-            UserDefaults.standard.set(2, forKey: "NUMBEROFBARS")
-            barsAreSelected = true
-        } else if barSegmentedControl.selectedSegmentIndex == 1 {
-            UserDefaults.standard.set(3, forKey: "NUMBEROFBARS")
-            barsAreSelected = true
-        } else if barSegmentedControl.selectedSegmentIndex == 2 {
-            UserDefaults.standard.set(4, forKey: "NUMBEROFBARS")
-            barsAreSelected = true
-        } else if barSegmentedControl.selectedSegmentIndex == 3 {
-            UserDefaults.standard.set(5, forKey: "NUMBEROFBARS")
-            barsAreSelected = true
+    // Function called when the UIPicker for the amount of measures before a scale change is switched
+    @IBAction func measurePickerAction(_ sender: Any) {
+        if measureSegmentedControl.selectedSegmentIndex == 0 {
+            UserDefaults.standard.set(2, forKey: "NUMBEROFMEASURES")
+            measuresAreSelected = true
+        } else if measureSegmentedControl.selectedSegmentIndex == 1 {
+            UserDefaults.standard.set(3, forKey: "NUMBEROFMEASURES")
+            measuresAreSelected = true
+        } else if measureSegmentedControl.selectedSegmentIndex == 2 {
+            UserDefaults.standard.set(4, forKey: "NUMBEROFMEASURES")
+            measuresAreSelected = true
+        } else if measureSegmentedControl.selectedSegmentIndex == 3 {
+            UserDefaults.standard.set(5, forKey: "NUMBEROFMEASURES")
+            measuresAreSelected = true
         }
     }
     
@@ -248,12 +248,12 @@ class ViewController: UIViewController {
         if metronomeBeat == 5 {
             metronomeBeat = 1
             firstBeatSnap.play()
-            metronomeBar += 1
-            theBarLabel.text = "\(metronomeBar)"
-            // Called everytime the bar is reset it 1 and the new scale is displayed.
-            if metronomeBar == UserDefaults.standard.integer(forKey: "NUMBEROFBARS") {
-                metronomeBar = 1
-                theBarLabel.text = "\(metronomeBar)"
+            metronomeMeasure += 1
+            theMeasureLabel.text = "\(metronomeMeasure)"
+            // Called everytime the measure is reset it 1 and the new scale is displayed.
+            if metronomeMeasure == UserDefaults.standard.integer(forKey: "NUMBEROFMEASURES") {
+                metronomeMeasure = 1
+                theMeasureLabel.text = "\(metronomeMeasure)"
                 let randomIndex = Int(arc4random_uniform(UInt32(scales.count)))
                 currentScale.text = nextScale.text
                 nextScale.text = scales[randomIndex]
