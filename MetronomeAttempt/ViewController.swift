@@ -195,7 +195,7 @@ class ViewController: UIViewController {
     // Function called when the UISlider for the metronome's speed is moved.
     @IBAction func speedSliderMoved(_ sender: Any) {
         
-        // Set core data
+        // Set value into core data
         UserDefaults.standard.set(Int(speedSlider.value), forKey: "METRONOMESPEED")
         // Updates metronome speed variable as slider is moved.
         metronomeSpeedVariable = Int(speedSlider.value)
