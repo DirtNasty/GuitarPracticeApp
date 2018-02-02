@@ -53,6 +53,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Disable swipe back action to prevent players from going back when adjusting metronome
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
         // Set up labels
         theTimerLabel.text = String(metronomeBeat)
         theBarLabel.text = String(metronomeBar)
