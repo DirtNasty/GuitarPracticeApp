@@ -38,6 +38,7 @@ class ViewController: UIViewController {
     var metronomeBeat = 1
     var metronomeBar = 1
     var metronomeSpeedVariable = UserDefaults.standard.integer(forKey: "METRONOMESPEED")
+    var timeInterval = UserDefaults.standard.double(forKey: "TIMEINTERVAL")
     var barNumber = UserDefaults.standard.integer(forKey: "NUMBEROFBARS")
     
     // Item variables
@@ -51,11 +52,17 @@ class ViewController: UIViewController {
     // Function called whenever the view is loaded but nothing is displayed on the screen
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set up labels
         theTimerLabel.text = String(metronomeBeat)
         theBarLabel.text = String(metronomeBar)
+        
         let randomIndex = Int(arc4random_uniform(UInt32(scales.count)))
         nextScale.text = scales[randomIndex]
         barSegmentedControl.selectedSegmentIndex = barNumber - 2
+        
+        metronomeSpeedLabel.text = String(metronomeSpeedVariable)
+        speedSlider.value = Float(metronomeSpeedVariable)
         
         if barSegmentedControl.selectedSegmentIndex == -2 || barNumber == 0 {
             barsAreSelected = false
@@ -92,7 +99,7 @@ class ViewController: UIViewController {
             barSegmentedControl.isHidden = true
             
             // Implementing timer and metronome
-            theTimer = Timer.scheduledTimer(timeInterval: UserDefaults.standard.double(forKey: "METRONOMESPEED"), target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+            theTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
             let path = Bundle.main.path(forResource: "snap1", ofType: "wav")
             let path2 = Bundle.main.path(forResource: "snap2", ofType: "wav")
             let soundURL = URL(fileURLWithPath: path!)
@@ -222,10 +229,15 @@ class ViewController: UIViewController {
         default:
             tempoRangeLabel.text = "Adagio"
         }
+        
+        // Set the timeInterval variable's value
+        //var convertedInterval = 60 / timeInterval
+        //UserDefaults.standard.set(convertedInterval, forKey: "TIMEINTERVAL")
+        
     }
     
     // Function called every time interval that happens within the "theTimer: Timer" variable
-    func timerAction() {
+    @objc func timerAction() {
         metronomeBeat += 1
         theTimerLabel.text = "\(metronomeBeat)"
         
