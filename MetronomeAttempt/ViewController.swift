@@ -71,6 +71,14 @@ class ViewController: UIViewController {
             barsAreSelected = false
         }
         
+        // Ensures that metronome slider is in correct position upon first time startup
+        if metronomeSpeedVariable == 0 {
+            UserDefaults.standard.set(60, forKey: "METRONOMESPEED")
+            metronomeSpeedVariable = 60
+            speedSlider.value = 60
+            metronomeSpeedLabel.text = "60"
+        }
+        
         // If statement that allows the 'barsAreSelected' variable to equate to true if a valid number is selected.
         if barSegmentedControl.selectedSegmentIndex == 0 || barSegmentedControl.selectedSegmentIndex == 1 || barSegmentedControl.selectedSegmentIndex == 2 || barSegmentedControl.selectedSegmentIndex == 3 {
             barsAreSelected = true
