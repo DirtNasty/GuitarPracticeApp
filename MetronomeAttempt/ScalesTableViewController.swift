@@ -16,6 +16,9 @@ class ScalesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Enables ability to swipe back to home screen by doing the swipe back gesture
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
