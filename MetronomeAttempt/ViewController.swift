@@ -71,12 +71,14 @@ class ViewController: UIViewController {
             barsAreSelected = false
         }
         
-        // Ensures that metronome slider is in correct position upon first time startup
+        // Ensures that metronome slider is in correct position upon first time startup.
         if metronomeSpeedVariable == 0 {
             UserDefaults.standard.set(60, forKey: "METRONOMESPEED")
             metronomeSpeedVariable = 60
             speedSlider.value = 60
             metronomeSpeedLabel.text = "60"
+            let convertedInterval = 60 / metronomeSpeedVariable
+            UserDefaults.standard.set(convertedInterval, forKey: "TIMEINTERVAL")
         }
         
         // If statement that allows the 'barsAreSelected' variable to equate to true if a valid number is selected.
@@ -110,7 +112,7 @@ class ViewController: UIViewController {
             barSegmentedControl.isHidden = true
             
             // Implementing timer and metronome
-            theTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+            theTimer = Timer.scheduledTimer(timeInterval: UserDefaults.standard.double(forKey: "TIMEINTERVAL"), target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
             let path = Bundle.main.path(forResource: "snap1", ofType: "wav")
             let path2 = Bundle.main.path(forResource: "snap2", ofType: "wav")
             let soundURL = URL(fileURLWithPath: path!)
@@ -241,9 +243,9 @@ class ViewController: UIViewController {
             tempoRangeLabel.text = "Adagio"
         }
         
-        // Set the timeInterval variable's value
-        //var convertedInterval = 60 / timeInterval
-        //UserDefaults.standard.set(convertedInterval, forKey: "TIMEINTERVAL")
+        // Set the timeInterval constant's value
+        let convertedInterval = 60 / Double(metronomeSpeedVariable)
+        UserDefaults.standard.set(convertedInterval, forKey: "TIMEINTERVAL")
         
     }
     
